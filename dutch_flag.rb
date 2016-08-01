@@ -11,18 +11,20 @@ class DutchFlag
   end
 
   def sort
-    @front = 0
-    @current = 0
-    @back = @array.length - 1
-
+    init_counters
     @array.length.times do
       move_current
     end
-
     @array
   end
 
   private
+
+  def init_counters
+    @front = 0
+    @current = 0
+    @back = @array.length - 1
+  end
 
   def move_current
     return to_front if low?
