@@ -1,3 +1,10 @@
+class Array
+  def swap!(a, b)
+    self[a], self[b] = self[b], self[a]
+    self
+  end
+end
+
 class DutchFlag
   def initialize(array)
     @array = array
@@ -13,20 +20,20 @@ class DutchFlag
         front += 1
         middle += 1
       elsif @array[front] == 2
-        swap!(front, back)
+        @array.swap!(front, back)
         back -= 1
       elsif @array[back] == 0
-        swap!(front, back)
+        @array.swap!(front, back)
         front += 1
         middle += 1
       elsif @array[back] == 2
         back -= 1
       elsif @array[middle] == 0
-        swap!(middle, front)
+        @array.swap!(middle, front)
         front += 1
         middle += 1
       elsif @array[middle] == 2
-        swap!(middle, back)
+        @array.swap!(middle, back)
         back -= 1
       elsif @array[middle] == 1
         middle += 1
@@ -34,13 +41,5 @@ class DutchFlag
     end
 
     @array
-  end
-
-  private
-
-  def swap!(a, b)
-    t = @array[a]
-    @array[a] = @array[b]
-    @array[b] = t
   end
 end
