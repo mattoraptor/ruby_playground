@@ -26,4 +26,9 @@ class DutchFlagTest < Test::Unit::TestCase
     result = DutchFlag.new([0, 2, 2, 0, 2, 0, 0, 2, 0]).sort
     assert_equal [0, 0, 0, 0, 0, 2, 2, 2, 2], result
   end
+
+  def test_sorts_with_two_ones
+    result = DutchFlag.new([1, 2, 0, 1]).sort
+    assert_equal [0, 1, 1, 2], result
+  end
 end

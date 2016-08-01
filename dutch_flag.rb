@@ -5,15 +5,34 @@ class DutchFlag
 
   def sort
     @front = 0
-    # ones = 0
+    @middle = 0
     @back = @array.length - 1
 
     @array.length.times do
-      move_up_front if @array[@front] == 0
-      front_to_back if @array[@front] == 2
+      if @middle > @back
+        break
 
-      if @array[@front] == 1
+      elsif @array[@front] == 0
+        @front += 1
+        @middle += 1
+      elsif @array[@front] == 2
         swap!(@front, @back)
+        @back -= 1
+      elsif @array[@back] == 0
+        swap!(@front, @back)
+        @front += 1
+        @middle += 1
+      elsif @array[@back] == 2
+        @back -= 1
+      elsif @array[@middle] == 0
+        swap!(@middle, @front)
+        @front += 1
+        @middle += 1
+      elsif @array[@middle] == 2
+        swap!(@middle, @back)
+        @back -= 1
+      elsif @array[@middle] == 1
+        @middle += 1
       end
     end
 
@@ -21,15 +40,6 @@ class DutchFlag
   end
 
   private
-
-  def move_up_front
-    @front += 1
-  end
-
-  def front_to_back
-    swap!(@front, @back) unless @front >= @back
-    @back -= 1
-  end
 
   def swap!(a, b)
     t = @array[a]
