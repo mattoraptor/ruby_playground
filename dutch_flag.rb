@@ -4,13 +4,17 @@ class DutchFlag
   end
 
   def sort
-    @zeroes = 0
+    @front = 0
     # ones = 0
-    @twos = @array.length - 1
+    @back = @array.length - 1
 
     @array.length.times do
-      swap!(0, 1) if @array[@zeroes] == 1
-      zero_to_twos if @array[@zeroes] == 2
+      move_up_front if @array[@front] == 0
+      front_to_back if @array[@front] == 2
+
+      if @array[@front] == 1
+        swap!(@front, @back)
+      end
     end
 
     @array
@@ -18,12 +22,17 @@ class DutchFlag
 
   private
 
-  def zero_to_twos
-    swap!(@zeroes, @twos)
-    @twos -= 1
+  def move_up_front
+    @front += 1
+  end
+
+  def front_to_back
+    swap!(@front, @back) unless @front >= @back
+    @back -= 1
   end
 
   def swap!(a, b)
+    puts "#{a} to #{b}"
     t = @array[a]
     @array[a] = @array[b]
     @array[b] = t
