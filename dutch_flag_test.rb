@@ -21,4 +21,9 @@ class DutchFlagTest < Test::Unit::TestCase
     result = DutchFlag.new([0, 2, 0]).sort
     assert_equal [0, 0, 2], result
   end
+
+  def test_sorts_long_zeroes_and_twos
+    result = DutchFlag.new([0, 2, 2, 0, 2, 0, 0, 2, 0]).sort
+    assert_equal [0, 0, 0, 0, 0, 2, 2, 2, 2], result
+  end
 end

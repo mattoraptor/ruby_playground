@@ -32,7 +32,6 @@ class DutchFlag
   end
 
   def swap!(a, b)
-    puts "#{a} to #{b}"
     t = @array[a]
     @array[a] = @array[b]
     @array[b] = t
