@@ -11,23 +11,41 @@ class DutchFlag
   end
 
   def sort
-    front = 0
-    middle = 0
-    back = @array.length - 1
+    @front = 0
+    @current = 0
+    @back = @array.length - 1
 
     @array.length.times do
-      if @array[middle] == 0
-        @array.swap!(middle, front)
-        front += 1
-        middle += 1
-      elsif @array[middle] == 2
-        @array.swap!(middle, back)
-        back -= 1
-      else
-        middle += 1
-      end
+      move_current
     end
 
     @array
+  end
+
+  private
+
+  def move_current
+    return to_front if low?
+    return to_back if high?
+    @current += 1
+  end
+
+  def to_front
+    @array.swap!(@current, @front)
+    @front += 1
+    @current += 1
+  end
+
+  def to_back
+    @array.swap!(@current, @back)
+    @back -= 1
+  end
+
+  def low?
+    @array[@current] == 0
+  end
+
+  def high?
+    @array[@current] == 2
   end
 end
