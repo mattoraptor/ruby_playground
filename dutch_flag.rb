@@ -26,8 +26,6 @@ class DutchFlag
       elsif @array[middle] == 2
         @array.swap!(middle, back)
         back -= 1
-      elsif @array[back] == 2
-        back -= 1
       elsif @array[middle] == 1
         middle += 1
       end
