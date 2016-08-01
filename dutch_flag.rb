@@ -16,10 +16,7 @@ class DutchFlag
     back = @array.length - 1
 
     @array.length.times do
-      if @array[front] == 0
-        front += 1
-        middle += 1
-      elsif @array[middle] == 0
+      if @array[middle] == 0
         @array.swap!(middle, front)
         front += 1
         middle += 1
