@@ -6,8 +6,17 @@ class Array
 end
 
 class DutchFlag
+  def self.sort(array)
+    DutchFlag.new(array).array
+  end
+
+  attr_reader :array
+
+  private
+
   def initialize(array)
     @array = array
+    sort
   end
 
   def sort
@@ -17,8 +26,6 @@ class DutchFlag
     end
     @array
   end
-
-  private
 
   def init_counters
     @front = 0
