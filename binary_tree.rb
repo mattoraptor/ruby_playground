@@ -7,17 +7,15 @@ class BinaryTreeNode
     result = ''
     stack = []
     current = self
-    while current
-      stack.push(current)
-      current = current.left
-    end
-
-    result += stack.pop.data until stack.empty?
-
-    current = @right
-    while current
-      result += current.data
-      current = current.right
+    until stack.empty? && current.nil?
+      if current.nil?
+        current = stack.pop
+        result += current.data
+        current = current.right
+      else
+        stack.push(current)
+        current = current.left
+      end
     end
     result
   end

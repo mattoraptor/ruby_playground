@@ -27,4 +27,22 @@ class BinaryTreeTest < Test::Unit::TestCase
     output = root.in_order
     assert_equal 'DBACE', output
   end
+
+  def test_inorder_is_correct_for_three_level_full
+    root = BinaryTreeNode.new('A')
+    b = BinaryTreeNode.new('B')
+    c = BinaryTreeNode.new('C')
+    d = BinaryTreeNode.new('D')
+    e = BinaryTreeNode.new('E')
+    f = BinaryTreeNode.new('F')
+    g = BinaryTreeNode.new('G')
+    root.left = b
+    root.right = c
+    b.left = d
+    b.right = e
+    c.left = f
+    c.right = g
+    output = root.in_order
+    assert_equal 'DBEAFCG', output
+  end
 end
