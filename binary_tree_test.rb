@@ -7,4 +7,12 @@ class BinaryTreeTest < Test::Unit::TestCase
     output = root.in_order
     assert_equal 'A', output
   end
+
+  def test_inorder_prints_three_node
+    root = BinaryTreeNode.new('A')
+    root.left = BinaryTreeNode.new('B')
+    root.right = BinaryTreeNode.new('C')
+    output = root.in_order
+    assert_equal 'BAC', output
+  end
 end

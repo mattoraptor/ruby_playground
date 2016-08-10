@@ -4,6 +4,14 @@ class BinaryTreeNode
   end
 
   def in_order
-    @data
+    result = ''
+    result += @left.data if @left
+    result += @data
+    result += @right.data if @right
+    result
   end
+
+  attr_reader :data
+  attr_accessor :left
+  attr_accessor :right
 end
