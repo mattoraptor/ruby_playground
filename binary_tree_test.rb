@@ -2,21 +2,34 @@ require_relative 'binary_tree'
 require 'test/unit'
 
 class BinaryTreeTest < Test::Unit::TestCase
+  def setup
+    @one_node = BinaryTreeNode.new('A')
+    @three_node = build_three_node
+    @big_full = build_big_full_tree
+    @v_shape = build_v_shape
+  end
+
   def test_inorder_prints_root
-    root = BinaryTreeNode.new('A')
-    output = root.in_order
+    output = @one_node.in_order
     assert_equal 'A', output
   end
 
   def test_inorder_prints_three_node
-    root = BinaryTreeNode.new('A')
-    root.left = BinaryTreeNode.new('B')
-    root.right = BinaryTreeNode.new('C')
-    output = root.in_order
+    output = @three_node.in_order
     assert_equal 'BAC', output
   end
 
   def test_inorder_prints_v
+    output = @v_shape.in_order
+    assert_equal 'DBACE', output
+  end
+
+  def test_inorder_is_correct_for_three_level_full
+    output = @big_full.in_order
+    assert_equal 'DBEAFCG', output
+  end
+
+  def build_v_shape
     root = BinaryTreeNode.new('A')
     b = BinaryTreeNode.new('B')
     c = BinaryTreeNode.new('C')
@@ -24,11 +37,10 @@ class BinaryTreeTest < Test::Unit::TestCase
     root.right = c
     b.left = BinaryTreeNode.new('D')
     c.right = BinaryTreeNode.new('E')
-    output = root.in_order
-    assert_equal 'DBACE', output
+    root
   end
 
-  def test_inorder_is_correct_for_three_level_full
+  def build_big_full_tree
     root = BinaryTreeNode.new('A')
     b = BinaryTreeNode.new('B')
     c = BinaryTreeNode.new('C')
@@ -42,7 +54,13 @@ class BinaryTreeTest < Test::Unit::TestCase
     b.right = e
     c.left = f
     c.right = g
-    output = root.in_order
-    assert_equal 'DBEAFCG', output
+    root
+  end
+
+  def build_three_node
+    root = BinaryTreeNode.new('A')
+    root.left = BinaryTreeNode.new('B')
+    root.right = BinaryTreeNode.new('C')
+    root
   end
 end
