@@ -7,6 +7,7 @@ class BinaryTreeTest < Test::Unit::TestCase
     @three_node = build_three_node
     @big_full = build_big_full_tree
     @v_shape = build_v_shape
+    @lopsided = build_lopsided
   end
 
   def test_inorder_prints_root
@@ -27,6 +28,11 @@ class BinaryTreeTest < Test::Unit::TestCase
   def test_inorder_is_correct_for_three_level_full
     output = @big_full.in_order
     assert_equal 'DBEAFCG', output
+  end
+
+  def test_inorder_lopsided
+    output = @lopsided.in_order
+    assert_equal 'DBFEAC', output
   end
 
   def build_v_shape
@@ -55,6 +61,21 @@ class BinaryTreeTest < Test::Unit::TestCase
     c.left = f
     c.right = g
     root
+  end
+
+  def build_lopsided
+    a = BinaryTreeNode.new('A')
+    b = BinaryTreeNode.new('B')
+    c = BinaryTreeNode.new('C')
+    d = BinaryTreeNode.new('D')
+    e = BinaryTreeNode.new('E')
+    f = BinaryTreeNode.new('F')
+    a.left = b
+    a.right = c
+    b.left = d
+    b.right = e
+    e.left = f
+    a
   end
 
   def build_three_node
