@@ -3,6 +3,14 @@ class BinaryTreeNode
     @data = data
   end
 
+  def pre_order
+    result = ''
+    result += @data
+    result += @left.data
+    result += @right.data
+    result
+  end
+
   def in_order
     result = ''
     stack = []

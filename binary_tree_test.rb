@@ -20,6 +20,11 @@ class BinaryTreeTest < Test::Unit::TestCase
     assert_equal 'BAC', output
   end
 
+  def test_pre_order_three_node
+    output = @three_node.pre_order
+    assert_equal 'ABC', output
+  end
+
   def test_inorder_prints_v
     output = @v_shape.in_order
     assert_equal 'DBACE', output
