@@ -5,9 +5,20 @@ class BinaryTreeNode
 
   def in_order
     result = ''
-    result += @left.data if @left
-    result += @data
-    result += @right.data if @right
+    stack = []
+    current = self
+    while current
+      stack.push(current)
+      current = current.left
+    end
+
+    result += stack.pop.data until stack.empty?
+
+    current = @right
+    while current
+      result += current.data
+      current = current.right
+    end
     result
   end
 

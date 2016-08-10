@@ -15,4 +15,16 @@ class BinaryTreeTest < Test::Unit::TestCase
     output = root.in_order
     assert_equal 'BAC', output
   end
+
+  def test_inorder_prints_v
+    root = BinaryTreeNode.new('A')
+    b = BinaryTreeNode.new('B')
+    c = BinaryTreeNode.new('C')
+    root.left = b
+    root.right = c
+    b.left = BinaryTreeNode.new('D')
+    c.right = BinaryTreeNode.new('E')
+    output = root.in_order
+    assert_equal 'DBACE', output
+  end
 end
