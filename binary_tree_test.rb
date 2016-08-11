@@ -45,6 +45,11 @@ class BinaryTreeTest < Test::Unit::TestCase
     assert_equal 'DBFEAC', output
   end
 
+  def test_pre_order_lopsided
+    output = @lopsided.pre_order
+    assert_equal 'ABDEFC', output
+  end
+
   def build_v_shape
     root = BinaryTreeNode.new('A')
     b = BinaryTreeNode.new('B')
