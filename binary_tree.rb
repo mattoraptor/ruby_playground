@@ -10,7 +10,7 @@ class BinaryTreeNode
     stack.push self
     until stack.empty?
       current = stack.pop
-      result += current.data
+      result += current.data # visit
       stack.push current.right if current.right
       stack.push current.left if current.left
     end
@@ -24,7 +24,7 @@ class BinaryTreeNode
     until stack.empty? && current.nil?
       if current.nil?
         current = stack.pop
-        result += current.data
+        result += current.data # visit
         current = current.right
       else
         stack.push(current)
