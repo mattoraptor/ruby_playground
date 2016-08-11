@@ -5,9 +5,15 @@ class BinaryTreeNode
 
   def pre_order
     result = ''
-    result += @data
-    result += @left.data
-    result += @right.data
+    stack = []
+
+    stack.push self
+    until stack.empty?
+      current = stack.pop
+      result += current.data
+      stack.push current.right if current.right
+      stack.push current.left if current.left
+    end
     result
   end
 

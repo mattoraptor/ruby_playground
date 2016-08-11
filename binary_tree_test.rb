@@ -35,6 +35,11 @@ class BinaryTreeTest < Test::Unit::TestCase
     assert_equal 'DBEAFCG', output
   end
 
+  def test_pre_order_big_full
+    output = @big_full.pre_order
+    assert_equal 'ABDECFG', output
+  end
+
   def test_inorder_lopsided
     output = @lopsided.in_order
     assert_equal 'DBFEAC', output
